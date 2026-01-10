@@ -1,0 +1,35 @@
+{
+  "name": "vitest-md-reporter",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vitest",
+    "markdown",
+    "typescript",
+    "test-report"
+  ],
+  "author": "Robert Kłódka",
+  "license": "MIT",
+  "description": "A TypeScript-based Markdown reporter for Vitest - ideal for CI pipelines and readable test summaries.",
+  "dependencies": {
+    "build-md": "0.4.5",
+    "date-fns": "4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.3",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
+  },
+  "peerDependencies": {
+    "vitest": "^4.0.16"
+  }
+}
