@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MarkdownRenderer > renders correctly 1`] = `
+"# Vitest Test Report
+
+## Test Run Summary
+
+| ℹ️ Status | 🕒 Start Time          | 🕓 End Time            | ⌛ Duration |
+| --------- | ---------------------- | ---------------------- | ---------: |
+| ✅ passed  | 26/01/2026 at 20:03:53 | 26/01/2026 at 20:04:30 |     37.18s |
+
+|            | ✅ Passed | ❌ Failed | ⏭️ Skipped | #️⃣ Total |
+| ---------- | -------: | -------: | ---------: | --------: |
+| Test Files |       12 |        1 |          3 |        16 |
+| Tests      |      184 |        2 |         10 |       196 |
+
+## Test Results
+"
+`;

@@ -6,7 +6,7 @@ import { format, intervalToDuration } from 'date-fns';
  * @param timestamp - The timestamp value since 1 January 1970.
  * @example
  * // returns "10/01/2026 at 15:47:28"
- * formatDateTime(1768052848);
+ * formatDateTime(1768052848338);
  * @returns           The formatted date time value.
  */
 export const formatDateTime = (timestamp: number): string => {
