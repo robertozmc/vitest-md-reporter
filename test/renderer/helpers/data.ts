@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { TestRunData } from '../../../src/types';
+import type { TestRunData } from '../../../src/types';
 
 export const generateData = () => {
   return {
