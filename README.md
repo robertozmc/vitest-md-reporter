@@ -4,16 +4,14 @@
 [![License](https://img.shields.io/npm/l/vitest-md-reporter)](LICENSE)
 
 **A lightweight Vitest reporter that generates Markdown test reports.**
-Group your tests by project and file, see passed/failed/skipped tests, and include error stacks — all in a neat Markdown file.
+Group your tests by project and file, see passed/failed/skipped tests - all in a neat Markdown file.
 
 ## Features
 
 - ✅ Generates Markdown reports from Vitest test runs
 - 📁 Groups tests by project and file
-- ⚠️ Includes error stacks in fenced code blocks
-- ⏱️ Shows total duration of the test run
+- ⏱️ Shows metadata like start and end time or total duration of the test run
 - ⚡ Simple setup, fully ESM and TypeScript ready
-- 🖊 Respects `vitest.config.outputFile.md` automatically
 
 ## Quick Start
 
@@ -23,22 +21,37 @@ Group your tests by project and file, see passed/failed/skipped tests, and inclu
 npm i -D vitest-md-reporter
 ```
 
-> Peer dependency: Vitest should already be installed in your project.
+> Peer dependency: Vitest should already be installed in your project. If it is not, you probably do not need this package.
 
 ### 2. Configure Vitest
 
-`{vite,vitest}.config.{js,ts}`
+#### Configuration options
+
+| Option          | Required | Default              | Description                                                                                                                                                                                                                    |
+| --------------- | -------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `outputFile`    | `false`  | `vitest-report.md`   | Path and filename for the generated Markdown report. Can be relative to the project root or an absolute path, but the file must remain within the project root. Attempts to save outside the project root will throw an error. |
+| `projectLabel`  | `false`  | `Project`            | Label used as the section name for grouping test results by project. Useful when working with multiple Vitest projects                                                                                                         |
+| `projectsOrder` | `false`  | -                    | Explicit order in which projects should appear in the report. Projects not listed will be appended after the specified ones, preserving vitest order                                                                           |
+| `title`         | `false`  | `Vitest Test Report` | Title displayed at the top of the report. Can be customized to match codebase or CI context                                                                                                                                    |
+
+#### Example
 
 ```typescript
+// {vite,vitest}.config.{js,ts}
 import { defineConfig } from 'vitest/config';
 import { MarkdownReporter } from 'vitest-md-reporter';
 
 export default defineConfig({
   test: {
-    reporters: ['default', new MarkdownReporter()],
-    outputFile: {
-      md: './test-results/report.md', // optional, defaults to vitest-report.md
-    },
+    reporters: [
+      'default',
+      new MarkdownReporter({
+        outputFile: './test-results/report.md',
+        projectLabel: 'Test Level',
+        projectsOrder: ['Unit', 'Integration'],
+        title: 'Test Summary - MyApp',
+      }),
+    ],
   },
 });
 ```
@@ -49,35 +62,14 @@ export default defineConfig({
 npx vitest run
 ```
 
-The Markdown report will be generated at the configured path (default: `vitest-report.md`).
+The markdown report will be generated at the configured path (`outputFile`).
 
 ## Example Output
 
-````md
-# Vitest Test Report
-
-**Total duration:** 1023 ms
-
----
-
-## Project: unit
-
-### test/foo.test.ts
-
-- ✅ **should pass this test**
-- ❌ **should fail gracefully**
-
-```text
-Error: expected true to be false
-    at Object.<anonymous> (test/foo.test.ts:10:15)
+```md
+TBD
 ```
-
-### test/bar.test.ts
-
-- ✅ passes correctly
-- ⏭️ skipped test
-````
 
 ## License
 
-MIT © Robert Kłódka
+[MIT © Robert Kłódka](LICENSE)
