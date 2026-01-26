@@ -96,7 +96,7 @@ export class MarkdownReporter implements Reporter {
     unhandledErrors: ReadonlyArray<SerializedError>,
     reason: TestRunEndReason,
   ): Promise<void> {
-    const data = this.buildReporterData(testModules, reason, Date.now());
+    const data = this.buildTestRunData(testModules, reason, Date.now());
     const markdownDocument = this.renderer.render(data);
     const outputPath = saveFileToDisk(markdownDocument, this.outputFile);
     this.log(`Markdown report written to ${outputPath}`);
@@ -121,7 +121,7 @@ export class MarkdownReporter implements Reporter {
    * @param endTime     - Timestamp marking the end of the test run.
    * @returns             A fully populated `TestRunData` object ready for rendering.
    */
-  private buildReporterData(
+  private buildTestRunData(
     testModules: ReadonlyArray<TestModule>,
     reason: TestRunEndReason,
     endTime: number,
