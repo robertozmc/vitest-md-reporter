@@ -135,7 +135,7 @@ export class MarkdownReporter implements Reporter {
       },
       projectLabel: this.projectLabel,
       projects: testModules
-        .map(this.mapTestModule)
+        .map((testModule) => this.mapTestModule(testModule))
         .reduce(this.groupByProject, [])
         .sort(this.sortByProject)
         .map(this.enhanceProject),
