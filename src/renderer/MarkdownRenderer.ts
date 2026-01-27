@@ -13,7 +13,7 @@ import type {
 } from '../types';
 import { formatDateTime, formatDuration } from './utils';
 
-const STATE_ICON: Record<State, '✅' | '❌' | '⏭️'> = {
+export const STATE_ICON: Record<State, '✅' | '❌' | '⏭️'> = {
   passed: '✅',
   failed: '❌',
   skipped: '⏭️',
@@ -300,8 +300,8 @@ export class MarkdownRenderer {
         ].join(', '),
       )
       .list([
-        ...testModule.tests.map(this.renderTest),
-        ...testModule.suites.map(this.renderTestSuite),
+        ...testModule.tests.map((test) => this.renderTest(test)),
+        ...testModule.suites.map((suite) => this.renderTestSuite(suite)),
       ]);
   }
 
@@ -322,8 +322,8 @@ export class MarkdownRenderer {
    */
   private renderTestSuite(suite: SuiteData): FormattedText {
     return md`🗂️ ${suite.name} ${md.list([
-      ...suite.tests.map(this.renderTest),
-      ...suite.suites.map(this.renderTestSuite),
+      ...suite.tests.map((test) => this.renderTest(test)),
+      ...suite.suites.map((suite) => this.renderTestSuite(suite)),
     ])}`;
   }
 

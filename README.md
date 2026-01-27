@@ -67,7 +67,34 @@ The markdown report will be generated at the configured path (`outputFile`).
 ## Example Output
 
 ```md
-TBD
+# Vitest Test Report
+
+## Test Run Summary
+
+| ℹ️ Status | 🕒 Start Time          | 🕓 End Time            | ⌛ Duration |
+| --------- | ---------------------- | ---------------------- | ----------: |
+| ❌ failed | 26/01/2026 at 20:03:53 | 26/01/2026 at 20:03:53 |       300ms |
+
+|            | ✅ Passed | ❌ Failed | ⏭️ Skipped | #️⃣ Total |
+| ---------- | --------: | --------: | ---------: | -------: |
+| Test Files |         0 |         1 |          0 |        1 |
+| Tests      |         1 |         1 |          0 |        2 |
+
+## Test Results
+
+### Project: Renderer
+
+| ✅ Passed | ❌ Failed | ⏭️ Skipped | #️⃣ Total | ⌛ Duration |
+| --------: | --------: | ---------: | -------: | ----------: |
+|         1 |         1 |          0 |        2 |       300ms |
+
+#### ✅ test/renderer/MarkdownRenderer.test.ts
+
+1 passed, 1 failed, 0 skipped, 2 total, done in 300ms
+
+- ✅ renders title heading _100ms_
+- 🗂️ rendering test run summary
+  - ❌ renders test run summary heading _200ms_
 ```
 
 ## License
