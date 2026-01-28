@@ -18,17 +18,17 @@ export const roundDurationToMs = (milliseconds: number = 0) => {
  * Saves the file inside the current process root.
  *
  * @param fileContent    - The conent to write to the file.
- * @param outputFilePath - The relative or absolute path within the current process root.
+ * @param outputFilePath - A relative path or an absolute path that resolves inside the allowed root.
  * @returns                The resolved absolute path of the saved file
  * @throws {Error}         If the resolved path is outside the current process root.
  */
 export const saveFileToDisk = (fileContent: string, outputFilePath: string) => {
-  const root = process.cwd();
+  const root = path.resolve(process.env.REPORT_OUTPUT_ROOT ?? process.cwd());
   const resolvedPath = path.resolve(root, outputFilePath);
 
   if (!resolvedPath.startsWith(root + path.sep)) {
     throw new Error(
-      `Invalid output file path: ${outputFilePath}. Must be inside the current process root.`,
+      `Invalid output file path: ${outputFilePath}. Must be inside ${root}.`,
     );
   }
 

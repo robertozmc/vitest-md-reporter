@@ -56,6 +56,12 @@ export default defineConfig({
 });
 ```
 
+#### Environment variables
+
+| Variable             | Required | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `REPORT_OUTPUT_ROOT` | `false`  | -       | Defines the root directory where the reporter is allowed to write output files. All generated report files **must resolve inside this directory**. If not set, the current working directory (`process.cwd()`) is used. The reporter prevents writing files outside of this directory to avoid accidental or unsafe filesystem access (e.g. path traversal). This is mainly intended for CI environments where test artifacts are written outside of the project checkout directory. |
+
 ### 3. Run Tests
 
 ```bash
